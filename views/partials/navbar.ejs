@@ -1,7 +1,8 @@
 <nav class="navbar px-4 navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
   <div class="container-fluid gap-4">
     <a class="navbar-brand" href="#">Blog.io</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+      aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarScroll">
@@ -24,3 +25,9 @@
     </div>
   </div>
 </nav>
+
+<% if (locals.error) { %>
+<div class="alert alert-danger" role="alert">
+    <%= locals.error %>
+</div>
+<% } %>
