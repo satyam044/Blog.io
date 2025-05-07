@@ -10,7 +10,7 @@ const storage = multer.diskStorage({
         cb(null, path.resolve(`./public/uploads/`));
     },
     filename: function (req, file, cb) {
-        const fileName = `${Date.now()-(file.originalname)}`;
+        const fileName = `${Date.now()}-${(file.originalname)}`;
         cb(null, fileName);
     }
 });
@@ -22,6 +22,14 @@ router.get("/add-new", (req, res) => {
         user: req.user,
     });
 })
+
+router.get("/:id", async (req, res) => {
+    const blog = await Blog.findById(req.params.id);
+    return res.render("blog", {
+        user: req.user,
+        blog,
+    });
+});
 
 router.post("/", upload.single('coverImage'), async (req, res) => {
     const { title, body } = req.body;
