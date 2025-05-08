@@ -21,7 +21,7 @@ const userSchema = new Schema({
     },
     profileImageURL: {
         type: String,
-        default: "./images/default.png"
+        default: "../images/default.png"
     },
     role: {
         type: String,
@@ -46,7 +46,7 @@ userSchema.pre("save", function (next) {
     next();
 });
 
-userSchema.static('matchPasswordAndGenerateToken',async function (email, password) {
+userSchema.static('matchPasswordAndGenerateToken', async function (email, password) {
     const user = await this.findOne({ email });
     if (!user) throw new Error('User Not Found!');
 
